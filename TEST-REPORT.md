@@ -52,3 +52,16 @@ The follow-up refinement also matches the compact # Images / 1:1 / Model: Name s
 
 Added POST /api/video/generate with request validation and a prebuilt 3-second 16:9 WebM sample (about 156 kB). The UI clearly labels it as procedural and not AI-generated; requested duration and ratio are simulated. Video API errors, valid responses and media URLs are now covered. The final suite passes 10 tests against the production build. Prettier formats the source. GitHub publication and Vercel deployment remain pending and are documented in PART-A-REVIEW.md. No Lighthouse or full WCAG certification is claimed.
 
+
+## Live Vercel verification - 1 November 2026
+
+The initial deployment compiled but used the Other framework preset, publishing static public files and returning a 404 for the application root. The fix explicitly selects Next.js in vercel.json and the Vercel project settings, resets the output directory to the framework default, and pins Node.js 24 to match the tested runtime.
+
+Verified against https://fomia-mockup.vercel.app/ after redeployment:
+
+- GET /: HTTP 200, Next.js application HTML.
+- POST /api/generate: HTTP 200, simulated image JSON.
+- POST /api/video/generate: HTTP 200, simulated video JSON.
+- Live Chrome smoke test: PASS (14 seconds including setup). Checks client hydration, all initial gallery images, image generation, sample video generation and playback, invalid-prompt error response, mobile overflow, and no client exceptions.
+
+Reproduce with LIVE_URL=https://fomia-mockup.vercel.app/ and run npx playwright test tests/deployment-smoke.spec.js. The test skips automatically when LIVE_URL is absent. Live captures are artifacts/deployed-desktop.png and artifacts/deployed-mobile.png.
