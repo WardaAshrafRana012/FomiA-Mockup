@@ -15,3 +15,5 @@ __pycache__/
 *.zip
 /asset  for  images/
 /contact-sheet.png
+
+.vercel/

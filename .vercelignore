@@ -1,0 +1,22 @@
+﻿node_modules
+.next
+.npm-cache
+.pdf-tools
+.git
+.vercel
+.env*
+*.log
+*.zip
+artifacts
+asset  for  images
+contact-sheet.png
+output
+playwright-report
+test-results
+tests
+tmp
+scripts
+PART-A-REVIEW.md
+TEST-REPORT.md
+ASSET-INVENTORY.md
+playwright.config.mjs
