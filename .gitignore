@@ -1,0 +1,17 @@
+node_modules/
+.next/
+.env*
+*.log
+.npm-cache/
+
+test-results/
+playwright-report/
+
+.pdf-tools/
+tmp/
+__pycache__/
+
+# Source-only repository packaging
+*.zip
+/asset  for  images/
+/contact-sheet.png
